@@ -2,8 +2,10 @@
 
 int main()
 {
-  printf("Hello world!");
-  printf("\nThe second line!");
+  printf("******************\n");
+  printf("Hello world!\n");
+  printf("The second line!\n");
+  printf("==================\n");
   return 0;
 }
 
