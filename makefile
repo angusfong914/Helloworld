@@ -1,5 +1,5 @@
 all: Hello World
-.PHONY : all
+.PHONY : all clean cleanall
 
 Hello : Hello.o
 	@echo Link the Hello.o and build Hello.exe
@@ -14,4 +14,6 @@ World.o : World.c
 	@echo Compile the World.c to World.o
 	cc -c World.c
 clean :
-	@rm *.o
+	-@rm *.o
+cleanall : clean
+	-@rm *.exe
