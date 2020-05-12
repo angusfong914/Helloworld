@@ -1,6 +1,6 @@
 .PHONY : all clean cleanall
 
-all: Hello World
+all: Hello World Print
 
 Hello : Hello.o
 	@echo Link the Hello.o and build Hello.exe
@@ -14,6 +14,12 @@ World : World.o
 World.o : World.c
 	@echo Compile the World.c to World.o
 	@cc -c World.c
+Print : Print.o
+	@echo Link the Print.o and build Print.exe
+	@cc -o Print.exe Print.o
+Print.o : Print.c
+	@echo Compile the Print.c
+	@cc -c Print.c
 clean :
 	-@rm -f *.o
 	@echo All *.o are removed.
