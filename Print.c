@@ -1,6 +1,9 @@
 #include <stdio.h>
 
+typedef enum {smBegin=0,smEnd} SeparateMode;
+
 void Print(char *filename);
+void Separator(SeparateMode mode);
 
 int main(int argc,char **argv)
 {
@@ -16,7 +19,7 @@ int main(int argc,char **argv)
 void Print(char *filename)
 {
 	FILE *fp;
-	char s[1024];
+	char s[128];
 
 	fp=fopen(filename,"r");
 	if(fp == NULL)
@@ -26,10 +29,20 @@ void Print(char *filename)
 	else
 	{
 		printf("%s is exists.\n",filename);
-		while (fgets(s,1024,fp)!=NULL)
+		Separator(smBegin);
+		while (fgets(s,128,fp)!=NULL)
 		{
 			printf("%s",s);
 		}
+		Separator(smEnd);
 		fclose(fp);
+	}
+}
+void Separator(SeparateMode mode)
+{
+	switch(mode)
+	{
+		case smBegin: printf("****************** Begin *********************\n");break;
+		case smEnd:   printf("==================  End  =====================\n");break;
 	}
 }
