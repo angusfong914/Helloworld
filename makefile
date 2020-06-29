@@ -1,11 +1,12 @@
-.PHONY : all clean cleanall
-exe=Hello World Print
+.PHONY : all clean cleanall list
+exe=Hello World Print fun_call
 
 all: $(exe)
 
 $(exe) : % : %.o
 	@cc -o $@ $<
 	@echo Link $< to $@
+	@./$@
 
 %.o :%.c
 	@cc -c $<
@@ -17,3 +18,5 @@ clean :
 cleanall : clean
 	-@rm -f *.exe
 	@echo All *.exe are removed.
+list :
+	@echo $(exe)
