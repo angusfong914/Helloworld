@@ -1,12 +1,11 @@
 .PHONY : all clean cleanall list
-exe=Hello World Print fun_call
+exe=Hello World Print fun_call const
 
 all: $(exe)
 
 $(exe) : % : %.o
 	@cc -o $@ $<
 	@echo Link $< to $@
-	@./$@
 
 %.o :%.c
 	@cc -c $<
